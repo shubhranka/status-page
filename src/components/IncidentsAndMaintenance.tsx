@@ -2,29 +2,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-// Enums matching your schema
-enum IncidentStatus {
-  INVESTIGATING = "INVESTIGATING",
-  IDENTIFIED = "IDENTIFIED",
-  MONITORING = "MONITORING",
-  RESOLVED = "RESOLVED",
-}
-
-enum MaintenanceStatus {
-  SCHEDULED = "SCHEDULED",
-  IN_PROGRESS = "IN_PROGRESS",
-  COMPLETED = "COMPLETED",
-  CANCELLED = "CANCELLED",
-}
-
 // Update interface definitions to match the schema
 interface IncidentUpdate {
   id: string
   incidentId: string
-  status: IncidentStatus
+  status: "INVESTIGATING" | "IDENTIFIED" | "MONITORING" | "RESOLVED"
   message: string
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
   updater?: {
     id: string
     email: string
@@ -34,11 +19,11 @@ interface IncidentUpdate {
 interface Incident {
   id: string
   title: string
-  status: IncidentStatus
-  impact: string // You might want to use an enum here
-  description?: string
-  createdAt: string
-  updatedAt: string
+  status: "INVESTIGATING" | "IDENTIFIED" | "MONITORING" | "RESOLVED"
+  impact: "MINOR" | "MAJOR" | "CRITICAL" 
+  description: string | null
+  createdAt: Date
+  updatedAt: Date
   updates: IncidentUpdate[]
   service: {
     id: string
@@ -49,10 +34,10 @@ interface Incident {
 interface MaintenanceUpdate {
   id: string
   maintenanceId: string
-  status: MaintenanceStatus
+  status: "SCHEDULED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED"
   message: string
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
   updater?: {
     id: string
     email: string
@@ -62,12 +47,12 @@ interface MaintenanceUpdate {
 interface Maintenance {
   id: string
   title: string
-  status: MaintenanceStatus
-  description?: string
-  scheduledStartTime: string
-  scheduledEndTime: string
-  createdAt: string
-  updatedAt: string
+  status: "SCHEDULED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED"
+  description: string | null
+  scheduledStartTime: Date
+  scheduledEndTime: Date
+  createdAt: Date
+  updatedAt: Date
   updates: MaintenanceUpdate[]
   service: {
     id: string
@@ -81,7 +66,7 @@ interface IncidentsAndMaintenanceProps {
 }
 
 // Helper functions
-function formatDate(dateString: string): string {
+function formatDate(dateString: string | Date): string {
   return new Date(dateString).toLocaleString()
 }
 

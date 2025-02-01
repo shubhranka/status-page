@@ -1,10 +1,10 @@
-import { getStatus } from "@/lib/status"
+import { getIncidentsAndMaintenance, getStatus } from "@/lib/status"
 import StatusCard from "@/components/StatusCard"
-// import IncidentsAndMaintenance from "@/components/IncidentsAndMaintenance"
-// import UpdateStatusForm from "@/components/UpdateStatusForm"
+import IncidentsAndMaintenance from "@/components/IncidentsAndMaintenance"
 
 export default async function Home() {
   const services = await getStatus()
+  const { incidents, maintenances } = await getIncidentsAndMaintenance()
 
   return (
     <main className="container mx-auto p-4 space-y-8 max-w-4xl">
@@ -14,7 +14,7 @@ export default async function Home() {
           <StatusCard key={service.id} service={service.name} status={service.status} message={service.description} />
         ))}
       </div>
-      {/* <IncidentsAndMaintenance incidents={incidents} maintenances={maintenances} /> */}
+      <IncidentsAndMaintenance incidents={incidents} maintenances={maintenances} />
       {/* <UpdateStatusForm /> */}
     </main>
   )

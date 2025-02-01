@@ -13,10 +13,32 @@ export async function getStatus() {
   }
 }
 
+
 export async function getIncidentsAndMaintenance() {
   try {
-    const incidents = await prisma.incident.findMany({})
-    const maintenances = await prisma.maintenance.findMany({})
+    // Populate incidents and maintenances
+    const incidents = await prisma.incident.findMany({
+        include: {
+            service: {
+                select: {
+                    id: true,
+                    name: true
+                }
+            },
+            updates: true
+        }
+    })
+    const maintenances = await prisma.maintenance.findMany({
+        include: {
+            service: {
+                select: {
+                    id: true,
+                    name: true
+                }
+            },
+            updates: true
+        }
+    })
     return { incidents, maintenances }
   } catch (error) {
     // console.error("[GET_INCIDENTS_AND_MAINTENANCE]", error)
