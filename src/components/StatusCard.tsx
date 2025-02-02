@@ -19,10 +19,17 @@ const statusLabels = {
     MAJOR_OUTAGE: "Major Outage",
   }
 
+  const borderColors = {
+    OPERATIONAL: "border-l-green-500",
+    DEGRADED_PERFORMANCE: "border-l-yellow-500",
+    PARTIAL_OUTAGE: "border-l-orange-500",
+    MAJOR_OUTAGE: "border-l-red-500",
+  }
+
   
 export default function StatusCard({ service, status, message }: StatusCardProps) {
   return (
-    <Card className={`border-l-4 border-l-${statusColors[status]} shadow-sm`}>
+    <Card className={`border-l-4 ${borderColors[status]} shadow-sm`}>
       <CardContent className="p-4 flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold">{service}</h2>

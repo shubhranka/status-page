@@ -14,7 +14,7 @@ export default async function Home() {
   return (
     <main className="container mx-auto p-4 space-y-8 max-w-4xl relative">
       <Link href={"/dashboard"} className="fixed top-4 right-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">{ user ? "Dashboard" : "Sign In"}</Link>
-      <Tabs defaultValue="services" className="w-full">
+      <Tabs defaultValue="services">
         <TabsList className="w-full">
           <TabsTrigger value="services">Services</TabsTrigger>
           <TabsTrigger value="incidents">Incidents</TabsTrigger>
