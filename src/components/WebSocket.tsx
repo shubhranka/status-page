@@ -1,14 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { toast } from "sonner";
 
 export default function WebSocketComp() { 
-    const [ws, setWs] = useState<WebSocket | null>(null);
     useEffect(() => {
         console.log(process.env.NEXT_PUBLIC_WEB_SOCKET_URL)
         const ws = new WebSocket(process.env.NEXT_PUBLIC_WEB_SOCKET_URL as string);
-        setWs(ws);
         ws.onopen = () => {
             console.log("WebSocket connection opened");
         }
