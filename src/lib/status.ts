@@ -6,9 +6,7 @@ export async function getStatus() {
   try {
     const services = await prisma.service.findMany({})
     return services
-  } catch (error) {
-    // console.error("[GET_STATUS]", error)
-    console.log(error)
+  } catch (e) {
     return []
   }
 }
@@ -46,3 +44,4 @@ export async function getIncidentsAndMaintenance() {
     return { incidents: [], maintenances: [] }
   }
 }
+

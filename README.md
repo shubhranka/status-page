@@ -103,7 +103,7 @@ Before you begin, ensure you have the following installed:
 
 The application is deployed on Vercel.
 
-You can access the deployed application here: [Deployment URL]
+You can access the deployed application:  [Here](https://status-page-8h9m.vercel.app)
 
 ## Loom Demo
 

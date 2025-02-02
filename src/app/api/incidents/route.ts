@@ -38,8 +38,6 @@ export async function POST(req: NextRequest) {
 
         const body = await req.text();
 
-        console.log(body)
-
         const { title, description, service, impact } = JSON.parse(body)
 
         if (!title || !description || !service || !impact) {
