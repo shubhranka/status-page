@@ -67,7 +67,7 @@ export default function UpdateIncident() {
               <SelectValue placeholder="Select an incident" />
             </SelectTrigger>
             <SelectContent>
-                {incidents.length == 0 && <p>No services found</p>}
+                {incidents.length == 0 && <p>No incident found</p>}
               {incidents.map((incident: Incident) => (
                 <SelectItem key={incident.id} value={incident.id}>{incident.title}</SelectItem>
               ))}
