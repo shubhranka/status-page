@@ -5,6 +5,8 @@ import { currentUser } from '@clerk/nextjs/server';
 import CreateService from './service';
 import { MoveLeft } from 'lucide-react';
 import Link from 'next/link';
+import CreateIncidents from './createIncidents';
+import UpdateIncident from './updateIncidents';
 
 export default async function AdminDashboard() {
 
@@ -23,18 +25,8 @@ export default async function AdminDashboard() {
         </div>
       <div className='flex flex-col gap-4'>
         { user?.privateMetadata.role === "admin" && <CreateService /> }
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-bold mb-4">Incidents</CardTitle>
-              <Button className="block px-4 py-2 bg-blue-600 text-white rounded">Create Incident</Button>
-          </CardHeader>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-bold mb-4">Update Incident</CardTitle>
-              <Button className="block px-4 py-2 bg-blue-600 text-white rounded">Update Incident</Button>
-          </CardHeader>
-        </Card>
+        <CreateIncidents />
+        <UpdateIncident />
         <Card>
           <CardHeader>
             <CardTitle className="text-xl font-bold mb-4">Maintenance</CardTitle>

@@ -29,7 +29,6 @@ export default function CreateService() {
 
         if (response.ok) {  
           setOpen(false)
-          toast.success("Service created successfully!")
         } else {
           toast.error("Failed to create service")
         }

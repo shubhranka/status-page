@@ -7,7 +7,6 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
-
     try {
         const {orgId, orgRole} = await auth()
         if (!orgId || !orgRole) {
@@ -38,8 +37,6 @@ export async function POST(req: NextRequest) {
 
         const body = await req.text();
 
-        console.log(body)
-
         const { name, description } = JSON.parse(body)
 
         if (!name || !description) {
@@ -54,9 +51,23 @@ export async function POST(req: NextRequest) {
             },
         });
 
+        await websocketSendMessage(`New service created: ${service.name}`)
+
         return NextResponse.json(service);
+
     } catch (error) {
         console.error("[SERVICES_POST]", error);
         return new NextResponse("Internal error", { status: 500 });
     }
+}
+
+const websocketSendMessage = async (message: string) => {
+    return new Promise((resolve, ) => {
+        const ws = new WebSocket(process.env.NEXT_PUBLIC_WEB_SOCKET_URL as string);
+        ws.onopen = () => {
+            ws.send(message);
+            resolve(true);
+            ws.close();
+        };
+    })
 }

@@ -47,10 +47,6 @@ function StatusBadge({ status }: { status: string }) {
     IDENTIFIED: "bg-orange-500",
     MONITORING: "bg-blue-500",
     RESOLVED: "bg-green-500",
-    SCHEDULED: "bg-gray-500",
-    IN_PROGRESS: "bg-yellow-500",
-    COMPLETED: "bg-green-500",
-    CANCELLED: "bg-red-500",
   }
 
   return (
@@ -75,10 +71,16 @@ export default function IncidentsAndMaintenance({ incidents}: IncidentsAndMainte
             <ul className="space-y-6">
               {incidents.map((incident) => (
                 <li key={incident.id} className="border-b pb-6 last:border-b-0 last:pb-0">
+                  <div>
+
                   <h3 className="text-lg font-semibold flex items-center gap-2 mb-2">
                     {incident.title}
                     <StatusBadge status={incident.status} />
                   </h3>
+                  <h6 className="text-lg font-semibold flex items-center gap-2 mb-2">
+                    {incident.impact}
+                  </h6>
+                  </div>
                   <p className="text-sm text-gray-600 mb-2">
                     Service: {incident.service.name}
                   </p>
