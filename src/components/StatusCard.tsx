@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
   
 interface StatusCardProps {
   service: string
-  status: "OPERATIONAL" | "DEGRADED_PERFORMANCE" | "PARTIAL_OUTAGE" | "MAJOR_OUTAGE"
+  status: "OPERATIONAL" | "DEGRADED_PERFORMANCE" | "PARTIAL_OUTAGE" | "MAJOR_OUTAGE" | "UNDER_MAINTENANCE"
   message: string | null
 }
 
@@ -11,6 +11,7 @@ const statusColors = {
   DEGRADED_PERFORMANCE: "yellow-500",
   PARTIAL_OUTAGE: "orange-500",
   MAJOR_OUTAGE: "red-500",
+  UNDER_MAINTENANCE: "blue-500",
 }
 const statusLabels = {
     OPERATIONAL: "Operational",
