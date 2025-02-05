@@ -9,7 +9,10 @@ export async function GET() {
     }
     const services = await prisma.service.findMany({
         where: {
-            organizationId: orgId!
+            organizationId: orgId!,
+            NOT: {
+                status: "UNDER_MAINTENANCE"
+            }
         }
     });
 

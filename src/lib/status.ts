@@ -1,12 +1,14 @@
 import { PrismaClient } from "@prisma/client"
+import { getLogger } from "./winston"
 
 const prisma = new PrismaClient()
-
+const logger = getLogger()
 export async function getStatus() {
   try {
     const services = await prisma.service.findMany({})
     return services
   } catch (e) {
+    logger.error("[GET_STATUS]", e)
     return []
   }
 }
@@ -39,8 +41,8 @@ export async function getIncidentsAndMaintenance() {
     })
     return { incidents, maintenances }
   } catch (error) {
-    // console.error("[GET_INCIDENTS_AND_MAINTENANCE]", error)
-    console.log(error)
+    logger.error("[GET_INCIDENTS_AND_MAINTENANCE]", error)
+
     return { incidents: [], maintenances: [] }
   }
 }

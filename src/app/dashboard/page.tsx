@@ -1,12 +1,11 @@
 import { SignOutButton } from '@/components/SignOutButton';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { currentUser } from '@clerk/nextjs/server';
 import CreateService from './service';
 import { MoveLeft } from 'lucide-react';
 import Link from 'next/link';
 import CreateIncidents from './createIncidents';
 import UpdateIncident from './updateIncidents';
+import CreateMaintenance from './createMaintenance';
 
 export default async function AdminDashboard() {
 
@@ -27,12 +26,7 @@ export default async function AdminDashboard() {
         { user?.privateMetadata.role === "admin" && <CreateService /> }
         <CreateIncidents />
         <UpdateIncident />
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-bold mb-4">Maintenance</CardTitle>
-              <Button className="block px-4 py-2 bg-blue-600 text-white rounded">Schedule Maintenance</Button>
-          </CardHeader>
-        </Card>
+        <CreateMaintenance />
       </div>
     </div>
   );

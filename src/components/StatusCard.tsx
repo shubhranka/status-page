@@ -17,6 +17,7 @@ const statusLabels = {
     DEGRADED_PERFORMANCE: "Degraded Performance",
     PARTIAL_OUTAGE: "Partial Outage",
     MAJOR_OUTAGE: "Major Outage",
+    UNDER_MAINTENANCE: "Under Maintenance",
   }
 
   const borderColors = {
@@ -24,6 +25,7 @@ const statusLabels = {
     DEGRADED_PERFORMANCE: "border-l-yellow-500",
     PARTIAL_OUTAGE: "border-l-orange-500",
     MAJOR_OUTAGE: "border-l-red-500",
+    UNDER_MAINTENANCE: "border-l-blue-500",
   }
 
   

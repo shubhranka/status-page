@@ -120,6 +120,7 @@ enum ServiceStatus {
   DEGRADED_PERFORMANCE
   PARTIAL_OUTAGE
   MAJOR_OUTAGE
+  UNDER_MAINTENANCE
 }
 
 enum IncidentStatus {
