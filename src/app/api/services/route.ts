@@ -2,9 +2,11 @@ import { currentUser, auth } from "@clerk/nextjs/server";
 
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import { getLogger } from "@/lib/winston";
 
 
 const prisma = new PrismaClient();
+const logger = getLogger();
 
 export async function POST(req: NextRequest) {
     try {
@@ -56,7 +58,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(service);
 
     } catch (error) {
-        console.error("[SERVICES_POST]", error);
+        logger.error("[SERVICES_POST]", error)
         return new NextResponse("Internal error", { status: 500 });
     }
 }
