@@ -1,14 +1,12 @@
 "use client"
-
-import { getIncidentsAndMaintenance, getStatus } from "@/lib/status"
 import StatusCard from "@/components/StatusCard"
 import IncidentsAndMaintenance from "@/components/Incidents"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import MaintenanceScreen from "@/components/Maintenance"
 import Link from "next/link"
 import { useAuth } from "@clerk/nextjs/"
-import { useEffect, useMemo, useState } from "react"
-import { Incident, Maintenance, Service } from "@prisma/client"
+import { useEffect, useState } from "react"
+import { Service } from "@prisma/client"
 
 export default function Home() {
 
@@ -57,7 +55,6 @@ export default function Home() {
         {maintenances.length > 0 && <MaintenanceScreen maintenances={maintenances} />}
       </TabsContent>
       </Tabs>
-      {/* <UpdateStatusForm /> */}
     </main>
   )
 }
