@@ -47,11 +47,16 @@ export default function Home() {
             <StatusCard key={service.id} service={service.name} status={service.status} message={service.description} />
           ))}
         </div>
+        <div>
+          {services.length === 0 && <p className="text-gray-600">Loading</p>}
+        </div>
       </TabsContent>
       <TabsContent value="incidents">
+        {incidents.length === 0 && <p className="text-gray-600">Loading</p>}
         {incidents.length > 0 && <IncidentsAndMaintenance incidents={incidents} />}
       </TabsContent>
       <TabsContent value="maintenances">
+        {maintenances.length === 0 && <p className="text-gray-600">Loading</p>}
         {maintenances.length > 0 && <MaintenanceScreen maintenances={maintenances} />}
       </TabsContent>
       </Tabs>
