@@ -111,3 +111,23 @@ export async function POST(req: NextRequest) {
         return new NextResponse("Internal error", { status: 500 });
     }
 }
+
+export async function GET() {
+    try {
+        const incidents = await prisma.incident.findMany({
+            include: {
+                service: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                },
+                updates: true
+            }
+        })
+        return NextResponse.json(incidents);
+    } catch (error) {
+        logger.error("[GET_INCIDENTS]", error);
+        return new NextResponse("Internal error", { status: 500 });
+    }
+}

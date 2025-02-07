@@ -73,3 +73,13 @@ const websocketSendMessage = async (message: string) => {
         };
     })
 }
+
+export async function GET() {
+    try {
+        const services = await prisma.service.findMany({});
+        return NextResponse.json(services);
+    } catch (error) {
+        logger.error("[SERVICES_GET]", error)
+        return new NextResponse("Internal error", { status: 500 });
+    }
+}

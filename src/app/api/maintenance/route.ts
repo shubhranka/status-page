@@ -77,3 +77,23 @@ export async function POST(req: NextRequest) {
         return new NextResponse("Internal error", { status: 500 });
     }
 }
+
+export async function GET() {
+    try {
+        const maintenances = await prisma.maintenance.findMany({
+            include: {
+                service: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                },
+                updates: true
+            }
+        })
+        return NextResponse.json(maintenances);
+    } catch (error) {
+        logger.error("[GET_MAINTENANCES]", error);
+        return new NextResponse("Internal error", { status: 500 });
+    }
+}
