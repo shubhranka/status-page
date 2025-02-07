@@ -4,7 +4,7 @@ import IncidentsAndMaintenance from "@/components/Incidents"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import MaintenanceScreen from "@/components/Maintenance"
 import Link from "next/link"
-import { useAuth } from "@clerk/nextjs/"
+import { useAuth } from "@clerk/nextjs"
 import { useEffect, useState } from "react"
 import { Service } from "@prisma/client"
 
