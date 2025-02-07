@@ -13,6 +13,14 @@ const statusColors = {
   MAJOR_OUTAGE: "red-500",
   UNDER_MAINTENANCE: "blue-500",
 }
+
+const bgColors = {
+    OPERATIONAL: "bg-green-500",
+    DEGRADED_PERFORMANCE: "bg-yellow-500",
+    PARTIAL_OUTAGE: "bg-orange-500",
+    MAJOR_OUTAGE: "bg-red-500",
+    UNDER_MAINTENANCE: "bg-blue-500",
+  }
 const statusLabels = {
     OPERATIONAL: "Operational",
     DEGRADED_PERFORMANCE: "Degraded Performance",
@@ -40,7 +48,7 @@ export default function StatusCard({ service, status, message }: StatusCardProps
         </div>
         <div className="flex items-center">
           <span className="text-sm font-medium mr-2">{statusLabels[status]}</span>
-          <div className={`w-3 h-3 rounded-full bg-${statusColors[status]}`}></div>
+          <div className={`w-3 h-3 rounded-full ${bgColors[status]}`}></div>
         </div>
       </CardContent>
     </Card>
