@@ -6,6 +6,7 @@ const logger = getLogger()
 export async function getStatus() {
   try {
     const services = await prisma.service.findMany({})
+    logger.info("[GET_STATUS]", services)
     return services
   } catch (e) {
     logger.error("[GET_STATUS]", e)
